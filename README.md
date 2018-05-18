@@ -26,7 +26,7 @@ heroku config:set NPM_REGISTRY_URL=yourdomain.example.local/npmRegistry/
 Save the token in your Heroku app config:
 
 ```sh
-heroku config:set GITHUB_AUTH_TOKEN=YOUR_TOKEN_HERE
+heroku config:set NPM_AUTH_TOKEN=YOUR_TOKEN_HERE
 ```
 
 Configure your app to use this buildpack:
@@ -57,10 +57,10 @@ Now you can perform authenticated npm operations on the dyno, including
 ## Tips
 
 Tip: If you ever change the token, you'll need to redeploy the app to
-ensure a new .netrc file is created:
+ensure a new .npmrc file is created:
 
 ```sh
-heroku config:set GITHUB_AUTH_TOKEN=NEW_TOKEN
+heroku config:set NPM_AUTH_TOKEN=NEW_TOKEN
 git commit --allow-empty -m "update dat npm token"
 git push heroku master
 ```
