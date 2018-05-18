@@ -17,6 +17,12 @@ Use this one-liner to read your [npm auth token](http://blog.npmjs.org/post/1183
 cat ~/.npmrc | head -1 | sed 's/.*=//g'
 ```
 
+[Optional] Save the URL of your custom registry to your Heroku app config:
+
+```sh
+heroku config:set NPM_REGISTRY_URL=yourdomain.example.local/npmRegistry/
+```
+
 Save the token in your Heroku app config:
 
 ```sh
@@ -36,6 +42,13 @@ The next time you push your app to Heroku, this buildpack will create a
 heroku run bash
 cat .npmrc
 //registry.npmjs.org/:_authToken=00000000-0000-0000-0000-000000000000
+```
+
+If you also specified the optional `NPM_REGISTRY_URL` variable as shown above, then:
+```sh
+heroku run bash
+cat .npmrc
+//yourdomain.example.local/npmRegistry/:_authToken=00000000-0000-0000-0000-000000000000
 ```
 
 Now you can perform authenticated npm operations on the dyno, including
