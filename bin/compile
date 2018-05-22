@@ -17,3 +17,4 @@ NPM_REGISTRY_URL=${NPM_REGISTRY_URL:=registry.npmjs.org/}  # If variable not set
 
 echo "" >> $BUILD_DIR/.npmrc
 echo "//$NPM_REGISTRY_URL:_authToken=$NPM_AUTH_TOKEN" >> $BUILD_DIR/.npmrc
+echo "registry = https://$NPM_REGISTRY_URL" >> $BUILD_DIR/.npmrc
