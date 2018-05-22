@@ -13,8 +13,9 @@ BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 source $BP_DIR/lib/environment.sh
 export_env_dir "$ENV_DIR"
 
-NPM_REGISTRY_URL=${NPM_REGISTRY_URL:=registry.npmjs.org/}  # If variable not set or null, set it to default.
+NPM_REGISTRY_PROTOCOL=${NPM_REGISTRY_PROTOCOL:=https}  # default: https
+NPM_REGISTRY_URL=${NPM_REGISTRY_URL:=registry.npmjs.org/}  # If variable not set or null, set it to default:.
 
 echo "" >> $BUILD_DIR/.npmrc
 echo "//$NPM_REGISTRY_URL:_authToken=$NPM_AUTH_TOKEN" >> $BUILD_DIR/.npmrc
-echo "registry = https://$NPM_REGISTRY_URL" >> $BUILD_DIR/.npmrc
+echo "registry = $NPM_REGISTRY_PROTOCOL://$NPM_REGISTRY_URL" >> $BUILD_DIR/.npmrc
